@@ -13,9 +13,15 @@
 #include "fillit.h"
 #include "libft.h"
 
-void main(int argc, char const *argv[])
+int	main(int argc, char const *argv[])
 {
-	if ((check1(argc, argv)) == NULL)
-		return (ft_putstr("error"));
+	tetr	**massiv;
+
+	if ((massiv = (check2(check1(argc, argv)))) == NULL)
+	{
+		ft_putstr("error");
+		return (0);
+	}
+	return (1);
 }
 
