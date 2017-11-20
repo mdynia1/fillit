@@ -14,7 +14,7 @@ NAME = fillit
 
 FLAGS = -Wall -Wextra -Werror
 
-SRC =  main.c check1.c check2.c
+SRC =  main.c check1.c check2.c figurator.c
 
 OBJ = $(SRC:.c=.o)
 

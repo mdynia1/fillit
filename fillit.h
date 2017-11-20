@@ -34,5 +34,6 @@ typedef struct	s_tetr
 
 char			**check1(int argc, char const *argv[]);
 tetr			**check2(char **array);
+int				figurator(tetr *elem);
 
 #endif

@@ -19,7 +19,7 @@ int	main(int argc, char const *argv[])
 
 	if ((massiv = (check2(check1(argc, argv)))) == NULL)
 	{
-		ft_putstr("error");
+		ft_putstr("error\n");
 		return (0);
 	}
 	return (1);

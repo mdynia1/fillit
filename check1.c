@@ -71,14 +71,13 @@ char	**check1(int argc, char const *argv[])
 	char	**array;
 
 	i = 0;
-	if (argc == 1 || argc > 2)
-	{
-		ft_putstr("arguments error\n");
+	if (argc != 2)
 		return NULL;
-	}
 	fd = open(argv[1], O_RDONLY);
 	while ((ret = read(fd, buf, 1)))
 		str[i++] = buf[0];
+	if (str[0] == '\0')
+		return NULL;
 	array = array_cut(str);
 	if (cheker(array) == 1)
 		return (array);

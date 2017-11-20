@@ -80,8 +80,8 @@ tetr	**check2(char **array)
 				coordinator(j, &massiv[i]);
 			j++;
 		}
-		// if (figurator(massiv[i]) == 0)
-		// 	return NULL;
+		if (figurator(massiv[i]) == 0)
+			return NULL;
 		i++;
 	}
 	return(massiv);
