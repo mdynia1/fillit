@@ -15,6 +15,10 @@
 # include <string.h>
 # include <stdlib.h>
 
+// delll
+# include <stdio.h>
+// dell
+
 typedef struct	s_list
 {
 	void			*content;

@@ -22,7 +22,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@gcc $(OBJ) -o $(NAME) libft.a
+	@gcc $(FLAGS) $(OBJ) -o $(NAME) libft.a
 
 clean:
 	/bin/rm -f $(OBJ)
@@ -31,15 +31,3 @@ fclean: clean
 	/bin/rm -f $(NAME)
 
 re: fclean all
-
-# NAME = ft_display_file
-# SRC = main.c
-# OBJ = main.o
-
-# all:$(OBJ)
-# 	@gcc $(SRC) -o $(NAME)
-# clean:
-# 	@rm -f *.o
-# fclean:clean
-# 	@rm -f $(NAME)
-# re: fclean all
