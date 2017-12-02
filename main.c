@@ -22,6 +22,7 @@ int	main(int argc, char const *argv[])
 		ft_putstr("error\n");
 		return (0);
 	}
+	solver(massiv);
 	return (1);
 }
 

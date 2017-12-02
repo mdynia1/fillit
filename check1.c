@@ -13,7 +13,20 @@
 #include "libft.h"
 #include "fillit.h"
 
-static int cheker(char **array)
+static int sub_checker(char c, int *dot, int *bar, int i)
+{
+	if (i == 20 && c != '\n')
+		return (0);
+	else if (((i + 1) % 5 == 0) && (c != '\n'))
+		return (0);
+	if (c == '.')
+		(*dot) += 1;
+	if (c == '#')
+		(*bar) += 1;
+	return (1);
+}
+
+static int checker(char **array)
 {
 	int		dot;
 	int		bar;
@@ -28,10 +41,8 @@ static int cheker(char **array)
 		bar = 0;
 		while(array[j][i] != '\0')
 		{
-			if (array[j][i] == '.')
-				dot++;
-			if (array[j][i] == '#')
-				bar++;
+			if (sub_checker(array[j][i], &dot, &bar, i) == 0)
+				return (0);
 			i++;
 		}
 		j++;
@@ -52,7 +63,7 @@ static char **array_cut(char *str)
 	j = 0;
 	array = (char **)malloc(sizeof(*array) * 27);
 	len = ft_strlen(str);
-	while (i < len)
+	while (i <= len)
 	{
 		array[j++] = ft_strsub(str, i, 21);
 		i += 21;
@@ -66,7 +77,7 @@ char	**check1(int argc, char const *argv[])
 	int		fd;
 	int		ret;
 	char	buf[1];
-	char	str[600];
+	char	str[800];
 	int		i;
 	char	**array;
 
@@ -78,8 +89,10 @@ char	**check1(int argc, char const *argv[])
 		str[i++] = buf[0];
 	if (str[0] == '\0')
 		return NULL;
+	if (ft_strlen(str) >= 546)
+		return NULL;
 	array = array_cut(str);
-	if (cheker(array) == 1)
+	if (checker(array) == 1)
 		return (array);
 	return NULL;
 }
