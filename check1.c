@@ -96,6 +96,3 @@ char	**check1(int argc, char const *argv[])
 		return (array);
 	return NULL;
 }
-
-
-

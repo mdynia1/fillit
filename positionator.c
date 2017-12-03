@@ -69,6 +69,8 @@ int		sqroot(int nb, tetr **array)
 	while (i++ < 28)
 		root = (root + square / root) / 2;
 	i = 0;
+	if ((int)(root * 10) % 10 != 0)
+		root += 1;
 	root = (int)root;
 	while (array[i])
 	{

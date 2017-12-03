@@ -27,7 +27,7 @@ t_pole	*solver(tetr **array)
 {
 	t_pole	*pole;
 	int		size;
-
+	
 	size = sqroot(arrlen(array) * 4, array);
 	pole = create_pole(size);
 	while (solve_it(array, pole, 0, arrlen(array)) == 0)
