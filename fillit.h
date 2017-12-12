@@ -15,6 +15,7 @@
 
 #include <unistd.h>
 #include <fcntl.h>
+#include "libft/libft.h"
 
 typedef struct	s_coord
 {
@@ -40,7 +41,7 @@ typedef struct	s_pole
 	char		**array;
 }				t_pole;
 
-char			**check1(int argc, char const *argv[]);
+char			**check1(char const *argv[]);
 tetr			**check2(char **array);
 int				figurator(tetr *elem);
 void			pos(tetr **item);

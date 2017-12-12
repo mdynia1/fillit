@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "fillit.h"
 
 static int sub_checker(char c, int *dot, int *bar, int i)
@@ -72,7 +71,7 @@ static char **array_cut(char *str)
 	return array;
 }
 
-char	**check1(int argc, char const *argv[])
+char	**check1(char const *argv[])
 {
 	int		fd;
 	int		ret;
@@ -82,9 +81,9 @@ char	**check1(int argc, char const *argv[])
 	char	**array;
 
 	i = 0;
-	if (argc != 2)
+	fd = open(argv[1], O_RDONLY); 
+	if (read(fd, NULL , 0) == -1)
 		return NULL;
-	fd = open(argv[1], O_RDONLY);
 	while ((ret = read(fd, buf, 1)))
 		str[i++] = buf[0];
 	if (str[0] == '\0')

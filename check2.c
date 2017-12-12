@@ -10,12 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "fillit.h"
-
-// dell
-#include <stdio.h>
-// dell
 
 tetr	*new_obj(char name)
 {

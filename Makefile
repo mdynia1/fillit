@@ -12,22 +12,35 @@
 
 NAME = fillit
 
-FLAGS = -Wall -Wextra -Werror
+LIBFTDIR = libft/
 
-SRC =  main.c check1.c check2.c figurator.c positionator.c pole.c solver.c
+SRC =	main.c check1.c check2.c figurator.c positionator.c pole.c solver.c
 
 OBJ = $(SRC:.c=.o)
 
+HEADER = fillit.h
+HEADERLIBFT = libft/libft.h
+CC = gcc
 
-all: $(NAME)
+CFLAGS = -Wall -Wextra -Werror
 
-$(NAME): $(OBJ)
-	@gcc $(FLAGS) $(OBJ) -o $(NAME) libft.a
+all: $(NAME) 
+
+$(NAME): $(OBJ) $(LIBFTDIR)libft.a
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -L./$(LIBFTDIR) -lft
+
+%.o: %.c
+		$(CC) $(CFLAGS) -o $@ -c $<
+
+$(LIBFTDIR)libft.a: libft/Makefile
+	make -C $(LIBFTDIR)
 
 clean:
-	/bin/rm -f $(OBJ)
+		rm -f $(OBJ)
+		make clean -C $(LIBFTDIR)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+		rm -f $(NAME)
+		rm -f $(LIBFTDIR)libft.a
 
 re: fclean all
