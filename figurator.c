@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-static int	cr1(int x, int y, tetr *elem)
+static int	cr1(int x, int y, t_tetr *elem)
 {
 	int i;
 
@@ -32,7 +32,7 @@ static int	cr1(int x, int y, tetr *elem)
 	return (i);
 }
 
-static int	cr2(int x, int y, tetr *elem)
+static int	cr2(int x, int y, t_tetr *elem)
 {
 	int i;
 
@@ -52,7 +52,7 @@ static int	cr2(int x, int y, tetr *elem)
 	return (i);
 }
 
-static int	cr3(int x, int y, tetr *elem)
+static int	cr3(int x, int y, t_tetr *elem)
 {
 	int i;
 
@@ -72,7 +72,7 @@ static int	cr3(int x, int y, tetr *elem)
 	return (i);
 }
 
-static int	cr4(int x, int y, tetr *elem)
+static int	cr4(int x, int y, t_tetr *elem)
 {
 	int i;
 
@@ -92,7 +92,7 @@ static int	cr4(int x, int y, tetr *elem)
 	return (i);
 }
 
-int			figurator(tetr *elem)
+int			figurator(t_tetr *elem)
 {
 	if ((cr1(elem->c1.x, elem->c1.y, elem) + cr2(elem->c2.x, elem->c2.y,
 	elem) + cr3(elem->c3.x, elem->c3.y, elem) + (cr4(elem->c4.x,

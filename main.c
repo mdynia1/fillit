@@ -14,7 +14,7 @@
 
 int	main(int argc, char const *argv[])
 {
-	tetr	**massiv;
+	t_tetr	**massiv;
 
 	if (argc != 2)
 	{
@@ -29,4 +29,3 @@ int	main(int argc, char const *argv[])
 	solver(massiv);
 	return (1);
 }
-

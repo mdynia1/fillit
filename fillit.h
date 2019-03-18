@@ -6,34 +6,33 @@
 /*   By: rkhilenk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 16:12:13 by rkhilenk          #+#    #+#             */
-/*   Updated: 2017/11/17 16:12:14 by rkhilenk         ###   ########.fr       */
+/*   Updated: 2017/12/12 16:51:36 by mdynia           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _FILLIT_H
 # define _FILLIT_H
-
-#include <unistd.h>
-#include <fcntl.h>
-#include "libft/libft.h"
+# include <unistd.h>
+# include <fcntl.h>
+# include "libft/libft.h"
 
 typedef struct	s_coord
 {
 	int			x;
 	int			y;
-}				coord;
+}				t_coord;
 
 typedef struct	s_tetr
 {
-	char	name;
-	char	**pos;
-	int		width;
-	int		height;
-	coord	c1;
-	coord	c2;
-	coord	c3;
-	coord	c4;
-}				tetr;
+	char			name;
+	char			**pos;
+	int				width;
+	int				height;
+	t_coord			c1;
+	t_coord			c2;
+	t_coord			c3;
+	t_coord			c4;
+}				t_tetr;
 
 typedef struct	s_pole
 {
@@ -42,19 +41,18 @@ typedef struct	s_pole
 }				t_pole;
 
 char			**check1(char const *argv[]);
-tetr			**check2(char **array);
-int				figurator(tetr *elem);
-void			pos(tetr **item);
+t_tetr			**check2(char **array);
+int				figurator(t_tetr *elem);
+void			pos(t_tetr **item);
 t_pole			*create_pole(int size);
 void			result_print(t_pole *pole);
 void			delete_pole(t_pole *pole);
-int				try_place(tetr *item, t_pole *pole, int x, int y);
-void			place_tetr(tetr *item, t_pole *pole, int x, int y);
-void			delete_tetr(tetr *item, t_pole *pole, int x, int y);
-int				solve_it(tetr **array, t_pole *pole, int i, int len);
-int				arrlen(tetr **array);
-int				ft_sqrt(int nb);
-t_pole			*solver(tetr **array);
-int				sqroot(int nb, tetr **array);
+int				try_place(t_tetr *item, t_pole *pole, int x, int y);
+void			place_tetr(t_tetr *item, t_pole *pole, int x, int y);
+void			delete_tetr(t_tetr *item, t_pole *pole, int x, int y);
+int				solve_it(t_tetr **array, t_pole *pole, int i, int len);
+int				arrlen(t_tetr **array);
+t_pole			*solver(t_tetr **array);
+int				sqroot(int nb, t_tetr **array);
 
 #endif

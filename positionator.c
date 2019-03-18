@@ -12,12 +12,12 @@
 
 #include "fillit.h"
 
-/* записываем уменшеную тетрисоиду в строковый формат (2й масив) */
-void	pos(tetr **item)
+void	pos(t_tetr **item)
 {
 	int		i;
 	char	*str;
 	int		j;
+
 	i = 0;
 	(*item)->pos = ft_memalloc(sizeof(char *) * (*item)->height);
 	while (i < (*item)->height)
@@ -26,10 +26,10 @@ void	pos(tetr **item)
 		str = ft_strnew((*item)->width);
 		while (j < (*item)->width)
 		{
-			if (((*item)->c1.x == j+1 && (*item)->c1.y == i+1) ||
-			((*item)->c2.x == j+1 && (*item)->c2.y == i+1) ||
-			((*item)->c3.x == j+1 && (*item)->c3.y == i+1) ||
-			((*item)->c4.x == j+1 && (*item)->c4.y == i+1))
+			if (((*item)->c1.x == j + 1 && (*item)->c1.y == i + 1) ||
+			((*item)->c2.x == j + 1 && (*item)->c2.y == i + 1) ||
+			((*item)->c3.x == j + 1 && (*item)->c3.y == i + 1) ||
+			((*item)->c4.x == j + 1 && (*item)->c4.y == i + 1))
 				str[j] = '#';
 			else
 				str[j] = '.';
@@ -40,7 +40,6 @@ void	pos(tetr **item)
 	}
 }
 
-/* очистка поля если нужно взять поле побольше */
 void	delete_pole(t_pole *pole)
 {
 	int i;
@@ -55,15 +54,16 @@ void	delete_pole(t_pole *pole)
 	ft_memdel((void **)&pole);
 }
 
-int		sqroot(int nb, tetr **array)
+int		sqroot(int nb, t_tetr **array)
 {
-	double square;
-	double root;
+	double	square;
+	double	root;
+	int		i;
 
 	square = (double)nb;
-	root=square/3;
-	int i;
-	if (square <= 0) return 0;
+	root = square / 3;
+	if (square <= 0)
+		return (0);
 	i = 0;
 	while (i++ < 28)
 		root = (root + square / root) / 2;

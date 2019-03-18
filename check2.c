@@ -12,11 +12,11 @@
 
 #include "fillit.h"
 
-tetr	*new_obj(char name)
+t_tetr	*new_obj(char name)
 {
-	tetr	*object;
+	t_tetr	*object;
 
-	if ((object = (tetr *)malloc(sizeof(*object))) == NULL)
+	if ((object = (t_tetr *)malloc(sizeof(*object))) == NULL)
 		return (NULL);
 	object->name = name;
 	object->c1.x = 0;
@@ -32,7 +32,7 @@ tetr	*new_obj(char name)
 	return (object);
 }
 
-void	w_h(tetr **item)
+void	w_h(t_tetr **item)
 {
 	if ((*item)->c1.x > (*item)->width)
 		(*item)->width = (*item)->c1.x;
@@ -52,16 +52,18 @@ void	w_h(tetr **item)
 		(*item)->height = (*item)->c4.y;
 }
 
-void	minimizator(tetr **item)
+void	minimizator(t_tetr **item)
 {
-	while ((*item)->c1.x > 1 && (*item)->c2.x > 1 && (*item)->c3.x > 1 && (*item)->c4.x > 1)
+	while ((*item)->c1.x > 1 && (*item)->c2.x > 1 &&
+		(*item)->c3.x > 1 && (*item)->c4.x > 1)
 	{
 		(*item)->c1.x -= 1;
 		(*item)->c2.x -= 1;
 		(*item)->c3.x -= 1;
 		(*item)->c4.x -= 1;
 	}
-	while ((*item)->c1.y > 1 && (*item)->c2.y > 1 && (*item)->c3.y > 1 && (*item)->c4.y > 1)
+	while ((*item)->c1.y > 1 && (*item)->c2.y > 1 &&
+		(*item)->c3.y > 1 && (*item)->c4.y > 1)
 	{
 		(*item)->c1.y -= 1;
 		(*item)->c2.y -= 1;
@@ -72,42 +74,41 @@ void	minimizator(tetr **item)
 	pos(&(*item));
 }
 
-
-void	coordinator(int i, tetr **item)
+void	coordinator(int i, t_tetr **item)
 {
 	if (((*item)->c1.x) == 0 && ((*item)->c1.y) == 0)
 	{
-		(*item)->c1.y = i/5 + 1;
-		(*item)->c1.x = i%5 + 1;
+		(*item)->c1.y = i / 5 + 1;
+		(*item)->c1.x = i % 5 + 1;
 	}
 	else if (((*item)->c2.x) == 0 && ((*item)->c2.y) == 0)
 	{
-		(*item)->c2.y = i/5 + 1;
-		(*item)->c2.x = i%5 + 1;
+		(*item)->c2.y = i / 5 + 1;
+		(*item)->c2.x = i % 5 + 1;
 	}
 	else if (((*item)->c3.x) == 0 && ((*item)->c3.y) == 0)
 	{
-		(*item)->c3.y = i/5 + 1;
-		(*item)->c3.x = i%5 + 1;
+		(*item)->c3.y = i / 5 + 1;
+		(*item)->c3.x = i % 5 + 1;
 	}
 	else if (((*item)->c4.x) == 0 && ((*item)->c4.y) == 0)
 	{
-		(*item)->c4.y = i/5 + 1;
-		(*item)->c4.x = i%5 + 1;
+		(*item)->c4.y = i / 5 + 1;
+		(*item)->c4.x = i % 5 + 1;
 	}
 }
 
-tetr	**check2(char **array)
+t_tetr	**check2(char **array)
 {
 	int		i;
 	int		j;
 	char	name;
-	tetr	**massiv;
+	t_tetr	**massiv;
 
 	if (array == NULL)
-		return NULL;
+		return (NULL);
 	name = 64;
-	massiv = (tetr **)malloc(sizeof(*massiv) * 27);
+	massiv = (t_tetr **)malloc(sizeof(*massiv) * 27);
 	i = -1;
 	while (array[++i])
 	{
@@ -121,7 +122,7 @@ tetr	**check2(char **array)
 		}
 		minimizator(&massiv[i]);
 		if (figurator(massiv[i]) == 0)
-			return NULL;
+			return (NULL);
 	}
-	return(massiv);
+	return (massiv);
 }

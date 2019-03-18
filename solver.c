@@ -12,34 +12,17 @@
 
 #include "fillit.h"
 
-int		arrlen(tetr **array)
+int		arrlen(t_tetr **array)
 {
 	int i;
 
 	i = 0;
-	while(array[i])
+	while (array[i])
 		i++;
 	return (i);
 }
 
-t_pole	*solver(tetr **array)
-{
-	t_pole	*pole;
-	int		size;
-	
-	size = sqroot(arrlen(array) * 4, array);
-	pole = create_pole(size);
-	while (solve_it(array, pole, 0, arrlen(array)) == 0)
-	{
-		size++;
-		delete_pole(pole);
-		pole = create_pole(size);
-	}
-	result_print(pole);
-	return (pole);
-}
-
-int		solve_it(tetr **array, t_pole *pole, int i, int len)
+int		solve_it(t_tetr **array, t_pole *pole, int i, int len)
 {
 	int x;
 	int y;
@@ -64,4 +47,21 @@ int		solve_it(tetr **array, t_pole *pole, int i, int len)
 		}
 	}
 	return (0);
+}
+
+t_pole	*solver(t_tetr **array)
+{
+	t_pole	*pole;
+	int		size;
+
+	size = sqroot(arrlen(array) * 4, array);
+	pole = create_pole(size);
+	while (solve_it(array, pole, 0, arrlen(array)) == 0)
+	{
+		size++;
+		delete_pole(pole);
+		pole = create_pole(size);
+	}
+	result_print(pole);
+	return (pole);
 }

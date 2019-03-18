@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-static int sub_checker(char c, int *dot, int *bar, int i)
+static int	sub_checker(char c, int *dot, int *bar, int i)
 {
 	if (i == 20 && c != '\n')
 		return (0);
@@ -25,7 +25,7 @@ static int sub_checker(char c, int *dot, int *bar, int i)
 	return (1);
 }
 
-static int checker(char **array)
+static int	checker(char **array)
 {
 	int		dot;
 	int		bar;
@@ -38,7 +38,7 @@ static int checker(char **array)
 		i = 0;
 		dot = 0;
 		bar = 0;
-		while(array[j][i] != '\0')
+		while (array[j][i] != '\0')
 		{
 			if (sub_checker(array[j][i], &dot, &bar, i) == 0)
 				return (0);
@@ -51,7 +51,7 @@ static int checker(char **array)
 	return (1);
 }
 
-static char **array_cut(char *str)
+static char	**array_cut(char *str)
 {
 	char	**array;
 	int		i;
@@ -68,30 +68,29 @@ static char **array_cut(char *str)
 		i += 21;
 	}
 	array[j] = NULL;
-	return array;
+	return (array);
 }
 
-char	**check1(char const *argv[])
+char		**check1(char const *argv[])
 {
 	int		fd;
-	int		ret;
 	char	buf[1];
 	char	str[800];
 	int		i;
 	char	**array;
 
 	i = 0;
-	fd = open(argv[1], O_RDONLY); 
-	if (read(fd, NULL , 0) == -1)
-		return NULL;
-	while ((ret = read(fd, buf, 1)))
+	fd = open(argv[1], O_RDONLY);
+	if (read(fd, NULL, 0) == -1)
+		return (NULL);
+	while (read(fd, buf, 1))
 		str[i++] = buf[0];
 	if (str[0] == '\0')
-		return NULL;
+		return (NULL);
 	if (ft_strlen(str) >= 546)
-		return NULL;
+		return (NULL);
 	array = array_cut(str);
 	if (checker(array) == 1)
 		return (array);
-	return NULL;
+	return (NULL);
 }

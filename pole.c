@@ -12,7 +12,6 @@
 
 #include "fillit.h"
 
-/* создание поля, размер size * size */
 t_pole	*create_pole(int size)
 {
 	t_pole	*pole;
@@ -38,7 +37,6 @@ t_pole	*create_pole(int size)
 	return (pole);
 }
 
-/* печать поля */
 void	result_print(t_pole *pole)
 {
 	int i;
@@ -52,7 +50,7 @@ void	result_print(t_pole *pole)
 	}
 }
 
-void	place_tetr(tetr *item, t_pole *pole, int x, int y)
+void	place_tetr(t_tetr *item, t_pole *pole, int x, int y)
 {
 	int i;
 	int j;
@@ -71,7 +69,7 @@ void	place_tetr(tetr *item, t_pole *pole, int x, int y)
 	}
 }
 
-void	delete_tetr(tetr *item, t_pole *pole, int x, int y)
+void	delete_tetr(t_tetr *item, t_pole *pole, int x, int y)
 {
 	int i;
 	int j;
@@ -90,8 +88,7 @@ void	delete_tetr(tetr *item, t_pole *pole, int x, int y)
 	}
 }
 
-/* попытка вставить тетрисину на определнные координаты (которые являются координатами врехнего левого угла) */
-int		try_place(tetr *item, t_pole *pole, int x, int y)
+int		try_place(t_tetr *item, t_pole *pole, int x, int y)
 {
 	int i;
 	int j;
@@ -112,28 +109,3 @@ int		try_place(tetr *item, t_pole *pole, int x, int y)
 	}
 	return (1);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
